@@ -27,11 +27,26 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $data['nama']       = $request->nama;
-        $data['email']      = $request->email;
-        $data['pertanyaan'] = $request->pertanyaan;
+        $nama      = $request->nama;
+        $email     = $request->email;
+        $pertanyan= $request->pertanyaan;
 
-        return view('home-question-respon', $data);
+       $pesan = "Terimakasih {$nama} ! Pertanyaan Anda : '{$pertanyan}' akan segera direspon melalui email {$email}";
+
+        // return redirect()->route('home');
+
+
+        // return view('home-question-respon', $data);
+
+
+        // return redirect()->route('home')->with('info', 'Terimakasih ,
+        //                                         pertanyaan anda telah terkirim' );
+
+
+        return redirect()->back()->with('info', $pesan);
+
+
+        // return redirect()->away('https://pcr.ac.id');
 
     }
 
@@ -45,6 +60,7 @@ class QuestionController extends Controller
             'email'      => $email,
             'pertanyaan' => $pertanyan,
         ];
+
 
         return view('home-question-respon', $data);
     }

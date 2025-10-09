@@ -33,7 +33,10 @@ Route::get('/detail', function () {
 Route::get('/profil', function () {
     return view ('halaman-mahasiswa-profil');
 });
-Route::get('/home', [HomeController::class, 'index']);
+
+
+Route::get('/home', [HomeController::class, 'index'])
+        ->name('home');
 
 Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
