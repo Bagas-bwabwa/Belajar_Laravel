@@ -51,3 +51,5 @@ Route::get('dashboard', [DashboardController::class, 'index'])
         -> name('dashboard');
 
 Route::resource('/pelanggan', PelangganController::class);
+
+Route::get('/users', [UserController::class, 'index'])->name('user.index');

@@ -1,5 +1,5 @@
 @extends('admin.template')
-@section('title', 'Edit Pelanggan')
+@section('title', 'Edit User')
 
 @section('content')
     <div class="py-4">
@@ -29,8 +29,8 @@
 
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Edit Data Pelanggan</h1>
-                <p class="mb-0">Ubah informasi pelanggan berikut</p>
+                <h1 class="h4">Edit Data User</h1>
+                <p class="mb-0">Ubah informasi User berikut</p>
             </div>
             <div>
                 <a href="{{ route('pelanggan.index') }}" class="btn btn-primary text-white">
@@ -105,8 +105,8 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div> 
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
+        </div> <!-- end col -->
+    </div> <!-- end row -->
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\UserController;
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $data['dataPelanggan'] = User::all();
+        $data['dataUser'] = User::all();
         return view('admin.user.index', $data);
     }
 
@@ -22,6 +23,7 @@ class PelangganController extends Controller
     public function create()
     {
         return view('admin.user.create');
+        $data['password'] = Hash::make($request->password);
     }
 
     /**
@@ -37,7 +39,7 @@ class PelangganController extends Controller
         $data['email']      = $request->email;
         $data['phone']      = $request->phone;
 
-        Pelanggan::create($data);
+        User::create($data);
 
         return redirect()->route('pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
     }
@@ -55,8 +57,8 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        $data['dataPelanggan'] = Pelanggan::findOrFail($id);
-        return view('admin.pelanggan.edit', $data);
+        $data['dataUser'] = User::findOrFail($id);
+        return view('admin.user.edit', $data);
     }
 
     /**
@@ -74,7 +76,7 @@ class PelangganController extends Controller
 
         Pelanggan::where('pelanggan_id', $id)->update($data);
 
-        return redirect()->route('pelanggan.index')
+        return redirect()->route('user.index')
             ->with('success', 'Perubahan Data Berhasil!');
     }
 
@@ -85,7 +87,7 @@ class PelangganController extends Controller
     {
     //  dd('masuk destroy', $id);
     $pelanggan = Pelanggan::findOrFail($id);
-    $pelanggan->delete();
-    return redirect()->route('pelanggan.index')->with('success', 'Data berhasil dihapus');
+    $user->delete();
+    return redirect()->route('user.index')->with('success', 'Data berhasil dihapus');
     }
 }
