@@ -1,20 +1,4 @@
-<!--
 
-=========================================================
-* Volt Free - Bootstrap 5 Dashboard
-=========================================================
-
-* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
-* Copyright 2021 Themesberg (https://www.themesberg.com)
-* License (https://themesberg.com/licensing)
-
-* Designed and coded by https://themesberg.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
-
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,10 +19,6 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="theme-color" content="#ffffff">
 
-	<!-- Volt CSS -->
-	<!-- Before -->
-	<!-- <link type="text/css" href="../../css/volt.css" rel="stylesheet"> -->
-
     <!-- After -->
     <link type="text/css" href="{{ asset('assets-admin/css/volt.css')}}" rel="stylesheet">
 
@@ -47,11 +27,7 @@
 <body>
 	<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
 		<a class="navbar-brand me-lg-5" href="../../index.html">
-            <!-- Before -->
-			<!-- <img class="navbar-brand-dark" src="../../assets/img/brand/light.svg" alt="Volt logo" />
-			<img class="navbar-brand-light" src="../../assets/img/brand/dark.svg" alt="Volt logo" /> -->
 
-            <!-- After -->
             <img class="navbar-brand-dark" src="{{ asset('assets-admin/img/brand/light.svg') }}" alt="Volt logo" />
             <img class="navbar-brand-light" src="{{ asset('assets-admin/img/brand/dark.svg') }}" alt="Volt logo" />
 		</a>
