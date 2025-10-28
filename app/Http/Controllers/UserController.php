@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\UserController;
-use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+use App\Models\user;
+use Illuminate\Support\Facades\Hash;
 
-class PelangganController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data['dataUser'] = User::all();
+        $data['datauser'] = user::all();
         return view('admin.user.index', $data);
     }
 
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
         return view('admin.user.create');
@@ -31,17 +32,15 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $data['first_name'] = $request->first_name;
-        $data['last_name']  = $request->last_name;
-        $data['birthday']   = $request->birthday;
-        $data['gender']     = $request->gender;
-        $data['email']      = $request->email;
-        $data['phone']      = $request->phone;
+        //dd($request->all());
 
-        User::create($data);
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = $request->password;
 
-        return redirect()->route('pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
+        user::create($data);
+
+        return redirect()->route('user.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**
@@ -57,7 +56,7 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        $data['dataUser'] = User::findOrFail($id);
+        $data['user'] = user::findOrFail($id);
         return view('admin.user.edit', $data);
     }
 
@@ -66,28 +65,21 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-        $data['first_name'] = $request->first_name;
-        $data['last_name']  = $request->last_name;
-        $data['birthday']   = $request->birthday;
-        $data['gender']     = $request->gender;
-        $data['email']      = $request->email;
-        $data['phone']      = $request->phone;
-
-        Pelanggan::where('pelanggan_id', $id)->update($data);
-
-        return redirect()->route('user.index')
-            ->with('success', 'Perubahan Data Berhasil!');
+        $user_id = $id;
+        $user = user::findOrFail($user_id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+        return redirect()->route('user.index')->with('success', 'Perubahan Data Berhasil!');
     }
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-    //  dd('masuk destroy', $id);
-    $pelanggan = Pelanggan::findOrFail($id);
-    $user->delete();
-    return redirect()->route('user.index')->with('success', 'Data berhasil dihapus');
+        $user =  user::findOrFail($id);
+        $user->delete();
+        return redirect()->route('user.index')->with('success', 'Data berhasil dihapus');
     }
 }
