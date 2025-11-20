@@ -63,4 +63,5 @@ Route::get('/auth', function () {
 Route::get('/auth', [AuthController::class, 'index']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 
-Route::get('/user', [UserController::class, 'index'])->name('user.index');
+// Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::resource('user', UserController::class);
