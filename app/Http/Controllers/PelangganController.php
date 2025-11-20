@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
@@ -10,9 +9,19 @@ class PelangganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['dataPelanggan'] = Pelanggan::all();
+        $filterableColumns = ['gender'];
+
+        $searchableColumns = ['first_name','last_name','email'];
+
+        $data['dataPelanggan'] = Pelanggan::filter($request, $filterableColumns)
+                                          ->search($request, $searchableColumns)
+                                          ->paginate(10)
+                                          ->withQweryString();
+
+
+        $data['dataPelanggan'] = Pelanggan::simplePaginate(10);
         return view('admin.pelanggan.index', $data);
     }
 
@@ -64,7 +73,7 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+
         $data['first_name'] = $request->first_name;
         $data['last_name']  = $request->last_name;
         $data['birthday']   = $request->birthday;
@@ -83,9 +92,9 @@ class PelangganController extends Controller
      */
     public function destroy(string $id)
     {
-    //  dd('masuk destroy', $id);
-    $pelanggan = Pelanggan::findOrFail($id);
-    $pelanggan->delete();
-    return redirect()->route('pelanggan.index')->with('success', 'Data berhasil dihapus');
+        //  dd('masuk destroy', $id);
+        $pelanggan = Pelanggan::findOrFail($id);
+        $pelanggan->delete();
+        return redirect()->route('pelanggan.index')->with('success', 'Data berhasil dihapus');
     }
 }
