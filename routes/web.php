@@ -65,3 +65,5 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 
 // Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::resource('user', UserController::class);
+
+Route::resource('profile', ProfileController::class);
