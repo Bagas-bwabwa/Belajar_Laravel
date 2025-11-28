@@ -10,7 +10,6 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MultipleuploadsController;
-use App\Http\Controllers\ProfileController;
 
 
 Route::get('/', function () {
@@ -65,5 +64,5 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 
-Route::get('/multipleuploads', 'MultipleuploadsController@index')->name('uploads');
-Route::post('/save','MultipleuploadsController@store')->name('uploads.store');
+Route::get('/multipleuploads', 'App\Http\Controllers\MultipleuploadsController@index')->name('uploads');
+Route::post('/save','App\Http\Controllers\MultipleuploadsController@store')->name('uploads.store');
