@@ -63,12 +63,7 @@ Route::get('/auth', function () {
 Route::get('/auth', [AuthController::class, 'index']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 
-// Route::get('/user', [UserController::class, 'index'])->name('user.index');
-Route::resource('user', UserController::class);
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
 
-
-// Route::get
-Route::get('/multipleuploads', [MultipleuploadsController::class, 'index'])->name('uploads');
-Route::post('/save', [MultipleuploadsController::class, 'store'])->name('uploads.store');
-
-Route::get('/profile/show', [AuthController::class, 'store']);
+Route::get('/multipleuploads', 'MultipleuploadsController@index')->name('uploads');
+Route::post('/save','MultipleuploadsController@store')->name('uploads.store');
