@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
     <meta name="author" content="Themesberg">
-
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets-admin/img/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32"
@@ -19,12 +18,9 @@
     <link rel="mask-icon" href="{{ asset('assets-admin/img/favicon/safari-pinned-tab.svg') }}" color="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
-
     <!-- CSS -->
    @include('admin.layout.css')
-
 </head>
-
 <body>
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
         <a class="navbar-brand me-lg-5" href="../../index.html">
@@ -41,23 +37,16 @@
     </nav>
     {{--sidebar--}}
     @include('admin.layout.sidebar')
-
-
     <main class="content">
         {{--header--}}
         @include('admin.layout.header')
-
-
         {{--content--}}
         @yield('content')
-
   {{--footer--}}
     @include('admin.layout.footer')
     {{--js--}}
     @include('admin.layout.js')
-
     <!-- Volt JS -->
     <script src="{{ asset('assets-admin/js/volt.js') }}"></script>
 </body>
-
 </html>
