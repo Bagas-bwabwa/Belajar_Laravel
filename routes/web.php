@@ -9,8 +9,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
-
-
+use App\Http\Controllers\MultipleuploadsController;
+use App\Http\Controllers\ProfileController;
 
 
 Route::get('/', function () {
@@ -63,4 +63,12 @@ Route::get('/auth', function () {
 Route::get('/auth', [AuthController::class, 'index']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 
-Route::get('/user', [UserController::class, 'index'])->name('user.index');
+// Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::resource('user', UserController::class);
+
+
+// Route::get
+Route::get('/multipleuploads', [MultipleuploadsController::class, 'index'])->name('uploads');
+Route::post('/save', [MultipleuploadsController::class, 'store'])->name('uploads.store');
+
+Route::get('/profile/show', [AuthController::class, 'store']);
